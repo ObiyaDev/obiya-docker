@@ -1,8 +1,8 @@
 # Motia Docker
 
-<div style="display: flex; flex-direction: column; align-items: center;width:100%; padding: 2rem 0">
+<p align="center">
 <img src="./assets/motia-docker.png" alt="motia docker">
-</div>
+</p>
 
 This repository contains the Dockerfile and related files for building the motia-docker image, which can be used to run a Motia application in a Docker container. It provides all of the required dependencies to run a Motia application inside a Docker container.
 
