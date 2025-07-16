@@ -1,0 +1,70 @@
+# Motia Docker
+
+<div style="display: flex; flex-direction: column; align-items: center;width:100%; padding: 2rem 0">
+<img src="./assets/motia-docker.png" alt="motia docker">
+</div>
+
+This repository contains the Dockerfile and related files for building the motia-docker image, which can be used to run a Motia application in a Docker container. It provides all of the required dependencies to run a Motia application inside a Docker container.
+
+## Usage
+
+You will need to implement your own Dockerfile where you will use this image as a base image. Use the following template for your Dockerfile:
+
+```dockerfile
+FROM motia/motia-docker
+
+# Install Dependencies
+COPY package*.json ./
+RUN npm ci --only=production
+
+# Move application files
+COPY . .
+
+# Enable the following lines if you are using python steps!!!
+# RUN . ./python_modules/bin/activate
+# # Setup python steps dependencies
+# RUN npx motia@latest install
+
+# Expose outside access to the motia project
+EXPOSE 3000
+
+# Run your application
+# TODO: update dev for start when the start command is ready
+CMD ["npm", "run", "dev"]
+```
+
+## Create a .dockerignore file
+
+You can use the .dockerignore.sample file as a template for your .dockerignore file.
+
+## Build the image
+
+```bash
+docker build -t motia-docker .
+```
+
+## Run your Motia application
+
+Once you've build your image, you can run it using the following command:
+
+```bash
+docker run -it --rm -p 3000:3000 motia-docker
+```
+
+> Replace the port and the name of your image accordingly this is just an example
+
+You are set to go! Your Motia application should now be running inside a Docker container, you can access it at `http://localhost:3000` (replace the port if you used a different one).
+
+
+## Contributing
+
+If you find any issues or have suggestions for improvements, please open an issue or submit a pull request. 
+
+### Building the base image
+
+To build the base image, run the following command:
+
+```bash
+docker build -t motia-docker .
+```
+
