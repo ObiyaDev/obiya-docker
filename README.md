@@ -11,7 +11,7 @@ This repository contains the Dockerfile and related files for building the motia
 You will need to implement your own Dockerfile where you will use this image as a base image. Use the following template for your Dockerfile:
 
 ```dockerfile
-FROM motia/motia-docker
+FROM motia-docker:latest
 
 # Install Dependencies
 COPY package*.json ./
@@ -40,7 +40,7 @@ You can use the .dockerignore.sample file as a template for your .dockerignore f
 ## Build the image
 
 ```bash
-docker build -t motia-docker .
+docker build -t motia-app .
 ```
 
 ## Run your Motia application
@@ -48,7 +48,7 @@ docker build -t motia-docker .
 Once you've build your image, you can run it using the following command:
 
 ```bash
-docker run -it --rm -p 3000:3000 motia-docker
+docker run -it --rm -p 3000:3000 motia-app
 ```
 
 > Replace the port and the name of your image accordingly this is just an example
