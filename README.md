@@ -11,7 +11,7 @@ This repository contains the Dockerfile and related files for building the motia
 You will need to implement your own Dockerfile where you will use this image as a base image. Use the following template for your Dockerfile:
 
 ```dockerfile
-FROM motia-docker:latest
+FROM motiadev/motia-docker:latest
 
 # Install Dependencies
 COPY package*.json ./
@@ -65,6 +65,22 @@ If you find any issues or have suggestions for improvements, please open an issu
 To build the base image, run the following command:
 
 ```bash
-docker build -t motia-docker .
+docker build -t motiadev/motia-docker:<version, use the last commit sha> .
 ```
+
+### Push the image to Docker Hub:
+
+```bash
+docker push motiadev/motia-docker:<version, use the last commit sha>
+```
+
+### Point to latest tag
+
+```bash
+docker tag motiadev/motia-docker:<version, use the last commit sha> motiadev/motia-docker:latest
+docker push motiadev/motia-docker:latest
+```
+
+
+
 
