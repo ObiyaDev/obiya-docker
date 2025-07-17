@@ -60,6 +60,12 @@ You are set to go! Your Motia application should now be running inside a Docker 
 
 If you find any issues or have suggestions for improvements, please open an issue or submit a pull request. 
 
+### Login to Docker using your credentials (you need to haver access to the motiadev org)
+
+```bash
+docker login
+```
+
 ### Building the base image
 
 To build the base image, run the following command:
