@@ -3,7 +3,8 @@ FROM debian:bullseye-slim
 # Environment variables
 ENV NODE_VERSION=22.17.1\
     NPM_VERSION=10.9.2\
-    NODE_HOME=/usr/local/node
+    NODE_HOME=/usr/local/node\
+    MOTIA_DOCKER=true
 
 # System packages
 RUN apt-get update && \
