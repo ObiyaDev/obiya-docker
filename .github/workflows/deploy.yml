@@ -41,16 +41,16 @@ jobs:
       - name: Build and push Docker image
         uses: docker/build-push-action@v5
         env: 
-          GITHUB_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
+          GITHUB_SHA: ${{ github.event.pull_request.head.sha || git rev-parse --short HEAD }}
         with:
           push: true
-          tags: ${{ env.DOCKER_MOTIA_ORG }}/${{ env.DOCKER_IMAGE_NAME }}:${{ github.event.inputs.version || env.GITHUB_SHA::7 }}
+          tags: ${{ env.DOCKER_MOTIA_ORG }}/${{ env.DOCKER_IMAGE_NAME }}:${{ github.event.inputs.version || env.GITHUB_SHA }}
           file: docker/Dockerfile
           context: ./docker
 
       - name: Point to latest tag
         env: 
-          GITHUB_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
+          GITHUB_SHA: ${{ github.event.pull_request.head.sha || git rev-parse --short HEAD }}
         run: |
-          docker tag ${{ env.DOCKER_MOTIA_ORG }}/${{ env.DOCKER_IMAGE_NAME }}:${{ github.event.inputs.version || env.GITHUB_SHA::7 }} ${{ env.DOCKER_MOTIA_ORG }}/${{ env.DOCKER_IMAGE_NAME }}:latest
+          docker tag ${{ env.DOCKER_MOTIA_ORG }}/${{ env.DOCKER_IMAGE_NAME }}:${{ github.event.inputs.version || env.GITHUB_SHA }} ${{ env.DOCKER_MOTIA_ORG }}/${{ env.DOCKER_IMAGE_NAME }}:latest
         
