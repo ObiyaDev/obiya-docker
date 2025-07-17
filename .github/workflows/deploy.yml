@@ -61,4 +61,9 @@ jobs:
         env: 
           GITHUB_SHA: ${{ github.event.inputs.environment|| steps.short-sha.outputs.sha }}
         run: |
+          # Pull the versioned image that was just pushed
+          docker pull ${{ env.DOCKER_MOTIA_ORG }}/${{ env.DOCKER_IMAGE_NAME }}:${{ github.event.inputs.version || env.GITHUB_SHA }}
+          # Tag it as latest
           docker tag ${{ env.DOCKER_MOTIA_ORG }}/${{ env.DOCKER_IMAGE_NAME }}:${{ github.event.inputs.version || env.GITHUB_SHA }} ${{ env.DOCKER_MOTIA_ORG }}/${{ env.DOCKER_IMAGE_NAME }}:latest
+          # Push the latest tag
+          docker push ${{ env.DOCKER_MOTIA_ORG }}/${{ env.DOCKER_IMAGE_NAME }}:latest
