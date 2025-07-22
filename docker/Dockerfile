@@ -1,3 +1,4 @@
+# syntax=docker/dockerfile:1
 FROM debian:bullseye-slim
 
 # Environment variables
@@ -48,8 +49,13 @@ RUN wget https://www.python.org/ftp/python/3.13.4/Python-3.13.4.tar.xz \
 # Create directory for Node
 RUN mkdir -p ${NODE_HOME}
 
+# Build argument for platform (automatically set by Docker buildx)
+ARG TARGETPLATFORM
+ARG BUILDPLATFORM
+
 # Setup Node
 RUN set -ex \
+    && echo "Building for platform: ${TARGETPLATFORM:-unknown}" \
     && ARCH=$(uname -m) \
     && if [ "$ARCH" = "x86_64" ]; then \
         NODE_ARCH="x64"; \

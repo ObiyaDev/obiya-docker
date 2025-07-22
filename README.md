@@ -11,7 +11,8 @@ This repository contains the Dockerfile and related files for building the motia
 You will need to implement your own Dockerfile where you will use this image as a base image. Use the following template for your Dockerfile:
 
 ```dockerfile
-FROM motiadev/motia-docker:latest
+# Specify platform to match your target architecture
+FROM --platform=linux/arm64 motiadev/motia-docker:latest
 
 # Install Dependencies
 COPY package*.json ./
@@ -86,7 +87,3 @@ docker push motiadev/motia-docker:<version, use the last commit sha>
 docker tag motiadev/motia-docker:<version, use the last commit sha> motiadev/motia-docker:latest
 docker push motiadev/motia-docker:latest
 ```
-
-
-
-
