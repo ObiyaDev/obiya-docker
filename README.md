@@ -45,7 +45,7 @@ docker build -t motia-app .
 
 ## Run your Motia application
 
-Once you've build your image, you can run it using the following command:
+Once you've built your image, you can run it using the following command:
 
 ```bash
 docker run -it --rm -p 3000:3000 motia-app
