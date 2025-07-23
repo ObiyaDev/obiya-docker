@@ -36,7 +36,8 @@ RUN gem install bundler
 RUN wget https://www.python.org/ftp/python/3.13.4/Python-3.13.4.tar.xz \
   && tar -xf Python-3.13.4.tar.xz \
   && cd Python-3.13.4 \
-  && ./configure --enable-optimizations \
+  # NOTE: if someone starts complaining about slowness in the python version add the argument --enable-optimizations below, take into account this will make the build process slower for the image
+  && ./configure \
   && make -j$(nproc) \
   && make altinstall \
   && cd .. \
