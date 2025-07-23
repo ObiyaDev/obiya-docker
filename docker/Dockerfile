@@ -36,7 +36,6 @@ RUN mkdir -p ${NODE_HOME}
 
 # Build argument for platform (automatically set by Docker buildx)
 ARG TARGETPLATFORM
-ARG BUILDPLATFORM
 
 # Setup Node
 RUN set -ex \

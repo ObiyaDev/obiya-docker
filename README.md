@@ -22,7 +22,6 @@ RUN npm ci --only=production
 COPY . .
 
 # Enable the following lines if you are using python steps!!!
-# RUN . ./python_modules/bin/activate
 # # Setup python steps dependencies
 # RUN npx motia@latest install
 
