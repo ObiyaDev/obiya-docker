@@ -1,5 +1,5 @@
 # syntax=docker/dockerfile:1
-FROM debian:bullseye-slim
+FROM python:3.13-slim-bullseye
 
 # Environment variables
 ENV NODE_VERSION=22.17.1\
@@ -30,22 +30,6 @@ RUN apt-get update && \
 
 # Setup Ruby bundler
 RUN gem install bundler
-
-# Setup Python
-
-RUN wget https://www.python.org/ftp/python/3.13.4/Python-3.13.4.tar.xz \
-  && tar -xf Python-3.13.4.tar.xz \
-  && cd Python-3.13.4 \
-  # NOTE: if someone starts complaining about slowness in the python version add the argument --enable-optimizations below, take into account this will make the build process slower for the image
-  && ./configure \
-  && make -j$(nproc) \
-  && make altinstall \
-  && cd .. \
-  && rm -rf Python-3.13.4 Python-3.13.4.tar.xz \
-  && ln -s /usr/local/bin/python3.13 /usr/bin/python3.13 \
-  && ln -s /usr/local/bin/python3.13 /usr/bin/python \
-  && ln -s /usr/local/bin/pip3.13 /usr/bin/pip \
-  && ln -s /usr/local/bin/pip3.13 /usr/bin/pip3
 
 # Create directory for Node
 RUN mkdir -p ${NODE_HOME}
