@@ -36,10 +36,12 @@ RUN mkdir -p ${NODE_HOME}
 
 # Build argument for platform (automatically set by Docker buildx)
 ARG TARGETPLATFORM
+ARG BUILDPLATFORM
 
 # Setup Node
 RUN set -ex \
     && echo "Building for platform: ${TARGETPLATFORM:-unknown}" \
+    && echo "Building for build platform: ${BUILDPLATFORM:-unknown}" \
     && ARCH=$(uname -m) \
     && if [ "$ARCH" = "x86_64" ]; then \
         NODE_ARCH="x64"; \
