@@ -12,7 +12,7 @@ You will need to implement your own Dockerfile where you will use this image as 
 
 ```dockerfile
 # Specify platform to match your target architecture
-FROM --platform=linux/arm64 motiadev/motia-docker:latest
+FROM --platform=linux/amd64 motiadev/motia-docker:latest
 
 # Install Dependencies
 COPY package*.json ./
@@ -29,8 +29,7 @@ COPY . .
 EXPOSE 3000
 
 # Run your application
-# TODO: update dev for start when the start command is ready
-CMD ["npm", "run", "dev"]
+CMD ["npm", "run", "start"]
 ```
 
 ## Create a .dockerignore file
