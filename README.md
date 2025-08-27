@@ -1,4 +1,4 @@
-# Motia Docker
+# Obiya Docker
 
 <p align="center">
 <img src="./docs/assets/motia-docker.png" alt="motia docker">
@@ -12,7 +12,7 @@ You will need to implement your own Dockerfile where you will use this image as 
 
 ```dockerfile
 # Specify platform to match your target architecture
-FROM --platform=linux/amd64 motiadev/motia-docker:latest
+FROM --platform=linux/amd64 obiyadev/obiya-docker:latest
 
 # Install Dependencies
 COPY package*.json ./
@@ -23,9 +23,9 @@ COPY . .
 
 # Enable the following lines if you are using python steps!!!
 # # Setup python steps dependencies
-# RUN npx motia@latest install
+# RUN npx obiya@latest install
 
-# Expose outside access to the motia project
+# Expose outside access to the obiya project
 EXPOSE 3000
 
 # Run your application
@@ -39,7 +39,7 @@ You can use the .dockerignore.sample file as a template for your .dockerignore f
 ## Build the image
 
 ```bash
-docker build -t motia-app .
+docker build -t obiya-app .
 ```
 
 ## Run your Motia application
@@ -47,19 +47,19 @@ docker build -t motia-app .
 Once you've built your image, you can run it using the following command:
 
 ```bash
-docker run -it --rm -p 3000:3000 motia-app
+docker run -it --rm -p 3000:3000 obiya-app
 ```
 
 > Replace the port and the name of your image accordingly this is just an example
 
-You are set to go! Your Motia application should now be running inside a Docker container, you can access it at `http://localhost:3000` (replace the port if you used a different one).
+You are set to go! Your Obiya application should now be running inside a Docker container, you can access it at `http://localhost:3000` (replace the port if you used a different one).
 
 
 ## Contributing
 
 If you find any issues or have suggestions for improvements, please open an issue or submit a pull request. 
 
-### Login to Docker using your credentials (you need to haver access to the motiadev org)
+### Login to Docker using your credentials (you need to haver access to the obiyadev org)
 
 ```bash
 docker login
@@ -70,18 +70,18 @@ docker login
 To build the base image, run the following command:
 
 ```bash
-docker build -t motiadev/motia-docker:<version, use the last commit sha> .
+docker build -t obiyadev/obiya-docker:<version, use the last commit sha> .
 ```
 
 ### Push the image to Docker Hub:
 
 ```bash
-docker push motiadev/motia-docker:<version, use the last commit sha>
+docker push obiyadev/obiya-docker:<version, use the last commit sha>
 ```
 
 ### Point to latest tag
 
 ```bash
-docker tag motiadev/motia-docker:<version, use the last commit sha> motiadev/motia-docker:latest
-docker push motiadev/motia-docker:latest
+docker tag obiyadev/obiya-docker:<version, use the last commit sha> obiyadev/obiya-docker:latest
+docker push obiyadev/obiya-docker:latest
 ```
