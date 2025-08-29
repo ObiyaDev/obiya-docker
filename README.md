@@ -1,7 +1,7 @@
 # Obiya Docker
 
 <p align="center">
-<img src="./docs/assets/motia-docker.png" alt="motia docker">
+<img src="https://github.com/ObiyaDev/obiya-docker/blob/main/docker.png" alt="motia docker">
 </p>
 
 This repository contains the Dockerfile and related files for building the motia-docker image, which can be used to run a Motia application in a Docker container. It provides all of the required dependencies to run a Motia application inside a Docker container.
